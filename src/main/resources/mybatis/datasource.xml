@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="scorpioMaster" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="name" value="scorpioMasterPool"/>
+        <property name="url" value="${scorpio-master.jdbc-url}"/>
+        <property name="username" value="${scorpio-master.username}"/>
+        <property name="password" value="${scorpio-master.password}"/>
+
+        <property name="filters" value="stat"/>
+
+        <property name="maxActive" value="${scorpio-master.druid.maxActive}"/>
+        <property name="initialSize" value="${scorpio-master.druid.initialSize}"/>
+        <property name="maxWait" value="${scorpio-master.druid.maxWait}"/>
+        <property name="minIdle" value="${scorpio-master.druid.minIdle}"/>
+
+        <property name="timeBetweenEvictionRunsMillis" value="${scorpio-master.druid.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${scorpio-master.druid.minEvictableIdleTimeMillis}"/>
+
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxOpenPreparedStatements" value="${scorpio-master.maxOpenPreparedStatements}"/>
+
+        <property name="asyncInit" value="true"/>
+    </bean>
+    <bean id="scorpioSlave" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="name" value="scorpioSlavePool"/>
+        <property name="url" value="${scorpio-slave.jdbc-url}"/>
+        <property name="username" value="${scorpio-slave.username}"/>
+        <property name="password" value="${scorpio-slave.password}"/>
+
+        <property name="filters" value="stat"/>
+
+        <property name="maxActive" value="${scorpio-slave.druid.maxActive}"/>
+        <property name="initialSize" value="${scorpio-slave.druid.initialSize}"/>
+        <property name="maxWait" value="${scorpio-slave.druid.maxWait}"/>
+        <property name="minIdle" value="${scorpio-slave.druid.minIdle}"/>
+
+        <property name="timeBetweenEvictionRunsMillis" value="${scorpio-slave.druid.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${scorpio-slave.druid.minEvictableIdleTimeMillis}"/>
+
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxOpenPreparedStatements" value="${scorpio-slave.maxOpenPreparedStatements}"/>
+
+        <property name="asyncInit" value="true"/>
+    </bean>
+</beans>
